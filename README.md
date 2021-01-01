@@ -64,3 +64,8 @@ python call.py
 ```
 As a result, the output file `gratio.out` is created. 
 
+
+# History
+
+*Version 1.0*
+- Initial release
