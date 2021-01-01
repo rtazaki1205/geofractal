@@ -14,18 +14,39 @@ and redistributed freely. If you use this package to publish papers, please cite
 > Submitted to MNRAS
 
 
-## The largest heading
-
 # Examples 
 
-For fotran package, first make the codes
+## fortran
 
+The input parameters can be set in `call.f90`.
+The structure of fractal dust aggregates is specified by the fractal dimension `df`, and fractal prefactor `k0`, 
+and number of monomers `N`. 
+In addition to this, you also need to specify following three swithces 
+
+- `iqapp` : Approximation for angular integration (=1 numerical solution, =2 approximate).
+- `iqcon` : The numerical factor to connect small non-fractal cluster limit. 
+- `iqcor` : The two-point correlation function of monomer distribution.
+
+In default, `iqapp=2`,`iqcor=3`,`iqcon=2`.
+To run the code, first, you make the codes
 ```
 Make
 ```
-This will create the executable file `results.x`. To run the code, you enter
+This will create the executable file `results.x`, and then execute it by
 ```
 ./results.x
 ```
+As a result, the output file `gratio.out` is created. 
+
+## Python 
+
+The python code assumes the recommended set of parameters: `iqapp=2`,`iqcor=3`,`iqcon=2`.
+The input parameter can be set in `call.py`. To run the code, you need to perform
+
+```
+call call.py
+```
+As a result, the output file `gratio.out` is created. 
+
 
 
