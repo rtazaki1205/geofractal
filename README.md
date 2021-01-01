@@ -28,7 +28,7 @@ In addition, the user also needs to specify following three options
 
 - Angular integration in the calculation of the mean overlapping efficiency  
 	`iqapp=1` : use numerical integration  
-	`iqapp=2` : use approximate analytical solution   
+	`iqapp=3` : use approximate analytical solution   
 - Small non-fractal cluster limit  
 	`iqcon=1` : without small cluster limit  
 	`iqcon=2` : with small cluster limit  
@@ -51,7 +51,7 @@ As a result, the output file `gratio.out` is created.
 
 ## Python 
 
-The python package of `geofractal` is a shortened version of the fortran package as it runs only with the recommended options: `iqapp=2`,`iqcon=2`,`iqcor=3`.
+The python package of `geofractal` is a shortened version of the fortran package as it runs only with the recommended options: `iqapp=3`,`iqcon=2`,`iqcor=3`.
 
 Similar to the fortran version, the user must specify input parameters in `call.py`
 - `df` : Fractal dimension (1 ≦ df ≦ 3)
