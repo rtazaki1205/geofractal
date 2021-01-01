@@ -39,7 +39,7 @@ In addition, the user also needs to specify following three options
 	
 I recommend following set of options: `iqapp=2`,`iqcor=3`,`iqcon=2` (default).  
 
-To run the code, first, you make the codes by
+To run the code, first, compile the codes via
 ```
 make
 ```
