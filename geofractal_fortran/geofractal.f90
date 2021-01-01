@@ -58,10 +58,6 @@
 !      Thus, "G" is non-dimensional quantity. 
 !
 !--------------------------------------------------------------------------------
-! HISTORY
-!--------------------------------------------------------------------------------
-!
-!--------------------------------------------------------------------------------
 
 module types
 implicit none
@@ -113,8 +109,6 @@ if(iqapp .ne. 1 .and. iqapp .ne. 2 .and. iqapp .ne. 3) then
         stop
 endif
 if(iqapp .eq. 2 .and. (debug .eqv. .false.)) then
-        print *, iqapp
-        print *, debug
         print *, 'error: iqapp = 2 is only allowed for a debug mode.'
         print *, 'stop'
         stop
@@ -132,10 +126,10 @@ if(iqcon .eq. 2) then
                 return
         endif
         call mean_overlap_efficiency(iqapp,iqcor,k0,df,PNTH,sigmath)
-        A     = (1.0_dp+(PNTH-1.0_dp)*sigmath)*GS(PNTH)
+        A = (1.0_dp+(PNTH-1.0_dp)*sigmath)*GS(PNTH)
 endif
 call mean_overlap_efficiency(iqapp,iqcor,k0,df,PN,sigma)
-G    = A / (1.0_dp + (PN-1.0_dp)*sigma)
+G = A / (1.0_dp + (PN-1.0_dp)*sigma)
 
 return
 end subroutine geofrac
