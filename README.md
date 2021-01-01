@@ -53,12 +53,12 @@ As a result, the output file `gratio.out` is created.
 
 The python package of `geofractal` is a shortened version of the fortran package as it runs only with the recommended options: `iqapp=3`,`iqcon=2`,`iqcor=3`.
 
-Similar to the fortran version, the user must specify input parameters in `call.py`
+Similar to the fortran package, the user can specify input parameters in `call.py`
 - `df` : Fractal dimension (1 ≦ df ≦ 3)
 - `k0` : Fractal prefactor
 - `PN` : Number of monomers (1 ≦ PN)
 
-To run the code, you need to perform
+To run the code, simply perform
 ```
 python call.py
 ```
