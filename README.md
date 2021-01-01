@@ -6,7 +6,7 @@ by means of a statistical distribution model of monomers proposed in Tazaki (sub
 
 # Terms of use
 
-`geofractal` is distributed under the [MIE license](https://opensource.org/licenses/MIT) and can be used, changed
+`geofractal` is distributed under the [MITlicense](https://opensource.org/licenses/MIT) and can be used, changed
 and redistributed freely. If you use this package to publish papers, please cite the following paper
 
 > R. Tazaki  
