@@ -26,13 +26,13 @@ As input parameters, the user must specify following three quantities in `call.f
 
 In addition, the user also needs to specify following three options
 
-- Approximation for angular integration (=1 numerical solution, =2 approximate).  
+- Angular integration in the calculation of the mean overlapping efficiency  
 	`iqapp=1` : use numerical integration  
 	`iqapp=2` : use approximate analytical solution   
-- The numerical factor to connect small non-fractal cluster limit.  
+- Small non-fractal cluster limit  
 	`iqcon=1` : without small cluster limit  
 	`iqcon=2` : with small cluster limit  
-- The two-point correlation function of monomer distribution.  
+- The two-point correlation function of fractal aggregates  
   `iqcor=1` : The Gaussian cut-off model  
 	`iqcor=2` : The exponential cut-off model  
 	`iqcor=3` : The fractal dimension cut-off model  
