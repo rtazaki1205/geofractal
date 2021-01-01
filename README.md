@@ -19,7 +19,7 @@ and redistributed freely. If you use this package to publish papers, please cite
 ## fortran
 
 The input parameters can be set in `call.f90`.  
-The user must specify following three input parameters in `call.f90`
+The user can specify following three input parameters in `call.f90`
 - `df` : Fractal dimension (1 ≦ df ≦ 3)
 - `k0` : Fractal prefactor
 - `PN` : Number of monomers (1 ≦ PN)
