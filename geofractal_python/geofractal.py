@@ -2,36 +2,113 @@ import numpy as np
 import math 
 from scipy.special import gammainc, gammaincc
 
-def geofractal(PN,df,k0):
-    if df > 1.5:
-        PNTH = 8.0
-    else:
-        PNTH = 11.0 * (df-1.0) + 2.5
+def geofractal(PN,df,k0,cormodel):
+    
+    """ 
+    --------------------------------------------------------------------------------
 
+       Python version of GEOFRACTAL version 1.0
+
+    --------------------------------------------------------------------------------
+
+     GEOFRACTAL v1.0 computes the geometrical cross section of randomly orientated
+     fractal dust aggregates based on a statistical distribution model of monomer
+     particles developed in Tazaki (in prep.).
+
+    --------------------------------------------------------------------------------
+     INPUT PARAMETERS
+    --------------------------------------------------------------------------------
+     
+     Df            : fractal dimension
+     PN            : number of monomers
+     k0            : fractal prefactor defined by PN = k0*(Rg/R0)^Df
+     cormodel      : The cut-off model of the correlation function
+                     cormodel = "EXPNL" : The exponential cut-off function
+                     cormodel = "GAUSS" : The Gaussias cut-off function
+                     cormodel = "FLDIM" : The fractal dimension cut-off function
+
+    --------------------------------------------------------------------------------
+     OUTPUT PARAMETER
+    --------------------------------------------------------------------------------
+
+     G  : The geocross section of the aggregate normalized by a factor PN*pi*R0^2.
+          Thus, "G" is non-dimensional quantity.
+
+    -------------------------------------------------------------------------------- 
+    """
+
+    #
+    # safety checks
+    #
+    if cormodel not in 'EXPNL-GAUSS-FLDIM':
+        print ' error: incorrect cormodel '
+        print ' stop '
+        exit()
+
+    if PN < 0.9999:
+        print ' error: number of monomer is less than 1.'
+        print ' stop'
+        exit()
+
+    if df < 0.9999 and df > 3.0001:
+        print ' error: fractal dimension is out of its range.'
+        print ' stop'
+        exit()
+
+    #
+    # Threshold number of monomers Nth
+    #
+    PNTH=min(11.0*(df-1.0)+2.5,8.0)
+
+    #
+    # calculation based on the analytical formula
+    #
     if PN < PNTH:
         G = minato(PN)
-        return G
     else:
-        sigth = overlap(PNTH,k0,df)
+        sigth = overlap(PNTH,k0,df,cormodel)
         Gth = minato(PNTH)
         A = (1.0+(PNTH-1.0)*sigth)*Gth
-        sig = overlap(PN,k0,df)
+        sig = overlap(PN,k0,df,cormodel)
         G = A / (1.0+(PN-1.0)*sig)
-        return G
+    
+    #
+    # return the cross section
+    #
+    return G
+
 
 def minato(PN):
+    """ 
+    Geometric cross sections of small non-fractal cluster    
+    Equation (A.1) in Minato et al. (2006)
+    """ 
+
     G = 12.5 * PN ** (-0.315) * np.exp(-2.53/PN**(0.0920))
     return G
 
-def overlap(PN,k0,df):
-    a = (df-2.0)/df
-    eta = 2.0 ** (df-1.0) * k0 / PN
+def overlap(PN,k0,df,cormodel):
+    """ 
+    Calculate the overlapping efficiency
+    """ 
+
+    if cormodel == 'EXPNL':
+        a = df-2.0
+        xmin = 2.0 * np.sqrt(0.5*df*(df+1.0))*(k0/PN)**(1.0/df)
+        fac = xmin * xmin / 16.0 / math.gamma(df)
+    elif cormodel == 'GAUSS':
+        a = 0.5*(df-2.0)
+        xmin = df*(k0/PN)**(2.0/df)
+        fac = xmin / 16.0 / math.gamma(0.5*df)
+    elif cormodel == 'FLDIM':
+        a = (df-2.0)/df
+        xmin = 2.0 ** (df-1.0) * k0 / PN
+        fac = xmin ** (2.0/df)/16.0
 
     if a > 0:
-        intg = math.gamma(a)*gammaincc(a,eta)
+        intg = math.gamma(a)*gammaincc(a,xmin)
     else:
         m = 1000
-        xmin = eta
         xmax = 25.0
         x = np.exp(np.linspace(math.log(xmin),math.log(xmax),m+1))
         dlnx = math.log(xmax/xmin)/(m+1)
@@ -41,5 +118,6 @@ def overlap(PN,k0,df):
             intg += 0.5*(f[i]+f[i+1])
         intg = intg * dlnx
 
-    sig = eta**(2.0/df)*intg/16.0
+    sig = fac*intg
+    
     return sig 
