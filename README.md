@@ -61,7 +61,7 @@ Similar to the fortran package, the user can specify input parameters in `call.p
 In addition, the use also needs to opt a model of two-point correlation function:  
 - `cormodel='EXPNL'` :  The exponential cut-off model  
 - `cormodel='GAUSS'` :  The Gaussian cut-off model  
-- `cormodel='FLDIM'` :  The fractal dimension cut-off model  
+- `cormodel='FLDIM'` :  The fractal dimension cut-off model (default)
 
 To run the code, simply perform
 ```
