@@ -47,12 +47,12 @@ def geofractal(PN,df,k0,cormodel):
 
     if PN < 0.9999:
         print ' error: number of monomer is less than 1.'
-        print ' stop'
+        print ' stop '
         exit()
 
-    if df < 0.9999 and df > 3.0001:
+    if df < 0.9999 or df > 3.0001:
         print ' error: fractal dimension is out of its range.'
-        print ' stop'
+        print ' stop '
         exit()
 
     #
