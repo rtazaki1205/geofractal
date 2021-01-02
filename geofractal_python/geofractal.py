@@ -91,7 +91,10 @@ def overlap(PN,k0,df,cormodel):
     """ 
     Calculate the overlapping efficiency
     """ 
-
+  
+    m = 1000     # number of grids in numerical integration for a<0
+    xmax = 25.0  # upper bound of numerical integration.
+    
     if cormodel == 'EXPNL':
         a = df-2.0
         xmin = 2.0 * np.sqrt(0.5*df*(df+1.0))*(k0/PN)**(1.0/df)
@@ -108,8 +111,6 @@ def overlap(PN,k0,df,cormodel):
     if a > 0:
         intg = math.gamma(a)*gammaincc(a,xmin)
     else:
-        m = 1000
-        xmax = 25.0
         x = np.exp(np.linspace(math.log(xmin),math.log(xmax),m+1))
         dlnx = math.log(xmax/xmin)/(m+1)
         f = x**a*np.exp(-x)
