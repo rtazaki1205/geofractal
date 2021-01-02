@@ -35,6 +35,7 @@ filename='gratio.out'
 with open(filename,'w') as f:
     f.write('# df  = %13.6e \n'%df)
     f.write('# k0  = %13.6e \n'%k0)
+    f.write('# model = %11s \n'%cormodel)
     f.write('# %11s %13s\n'%('N','G/NpiR0^2'))
     for i in range(N):
         f.write('%13.6e %13.6e\n'%(PN[i],G[i]))
