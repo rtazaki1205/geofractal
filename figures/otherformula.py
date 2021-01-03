@@ -23,7 +23,6 @@ def chain_exact(PN):
 
     return G
 
-
 def chararea(PN,df,k0):
     G = 5.0 * PN ** (-1.0+2.0/df)/3.0/k0**(2.0/df)
     G = min(G,1.0)
@@ -32,14 +31,9 @@ def chararea(PN,df,k0):
 def okuzumi09(PN,df,k0):
     k0_bcca = 1.04
     df_bcca = 1.9
-    rc  = np.sqrt(5.0/3.0) * (PN/k0) ** (1.0/df)
-    rc_bcca = np.sqrt(5.0/3.0) * (PN/k0_bcca)**(1.0/df_bcca)
-    A0      = np.pi
-    AC      = np.pi * rc * rc
-    A_BCCA  = PN * A0 * minato06_bcca(PN)
-    AC_BCCA = np.pi * rc_bcca * rc_bcca
-    A       = 1.0/A_BCCA+1.0/AC-1.0/AC_BCCA
-    A       = 1.0/A
-    G       = min(A/PN/A0,1.0)
-
+    G_BCCA  = minato06_bcca(PN)
+    GC      = 5.0 * PN ** (-1.0+2.0/df)/k0**(2.0/df)/3.0
+    GC_BCCA = 5.0 * PN ** (-1.0+2.0/df_bcca)/k0_bcca**(2.0/df_bcca)/3.0
+    G       = 1.0/G_BCCA + 1.0/GC - 1.0/GC_BCCA
+    G       = min(1.0/G,1.0)
     return G
