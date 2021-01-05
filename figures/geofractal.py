@@ -11,7 +11,7 @@ def geofractal(PN,df,k0,cormodel):
 
     --------------------------------------------------------------------------------
 
-     GEOFRACTAL v1.0 computes the geometrical cross section of randomly orientated
+     GEOFRACTAL computes geometrical cross sections of randomly orientated
      fractal dust aggregates based on a statistical distribution model of monomer
      particles developed in Tazaki (in prep.).
 
