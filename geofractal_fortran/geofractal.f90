@@ -330,6 +330,8 @@ end function fang
 ! The original subroutine was slightly modified so that the old F77 grammers
 ! are rewritten by modern grammers.
 !
+! Convergence accuracy eps is changed from 3e-7 to 3e-14.
+!
 !--------------------------------------------------------------------------------
 function gammq(a,x)
 use types
@@ -353,7 +355,7 @@ subroutine gser(gamser,a,x,gln)
 use types
 integer itmax
 real(kind=dp) a,gamser,gln,x,eps
-parameter (itmax=100,eps=3.e-7)
+parameter (itmax=100,eps=3.e-14)
 integer n
 real(kind=dp) ap,del,sum,gammln
 gln=gammln(a)
@@ -385,7 +387,7 @@ subroutine gcf(gammcf,a,x,gln)
 use types
 integer itmax
 real(kind=dp) a,gammcf,gln,x,eps,fpmin
-parameter (itmax=100,eps=3.e-7,fpmin=1.e-30)
+parameter (itmax=100,eps=3.e-14,fpmin=1.e-30)
 integer i
 real(kind=dp) an,b,c,d,del,h,gammln
 gln=gammln(a)
