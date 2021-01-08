@@ -10,7 +10,7 @@ Figures of Tazaki (submitted) can be recreated in [Jupyter Notebook].
 and redistributed freely. If you use this package to publish papers, please cite the following paper
 
 > R. Tazaki  
-> *Analytical formulas of geometric cross sections of fractal dust aggregates*  
+> *Analytical formula for geometric cross-sections of fractal dust aggregates*  
 > Submitted to MNRAS  
 
 
