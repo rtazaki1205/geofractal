@@ -2,7 +2,6 @@
 
 This package allows to compute average geometric cross sections of fractal dust aggregates 
 by means of a statistical distribution model of monomers proposed in Tazaki (submitted to MNRAS).  
-Figures of Tazaki (submitted) can be recreated in [Jupyter Notebook].
 
 # Terms of use
 
