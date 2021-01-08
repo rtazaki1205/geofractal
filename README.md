@@ -2,7 +2,6 @@
 
 This package allows to compute average geometric cross sections of fractal dust aggregates 
 by means of a statistical distribution model of monomers proposed in Tazaki (submitted to MNRAS).  
-Figures of Tazaki (submitted) can be recreated in [Jupyter Notebook].
 
 # Terms of use
 
@@ -10,7 +9,7 @@ Figures of Tazaki (submitted) can be recreated in [Jupyter Notebook].
 and redistributed freely. If you use this package to publish papers, please cite the following paper
 
 > R. Tazaki  
-> *Analytical formulas of geometric cross sections of fractal dust aggregates*  
+> *Analytical formula for geometric cross-sections of fractal dust aggregates*  
 > Submitted to MNRAS  
 
 
@@ -72,5 +71,5 @@ As a result, the output file `gratio.out` is created.
 
 # History
 
-*Version 1.0*
-- Initial release
+*Version 0.1*
+- Pre-release
