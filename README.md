@@ -71,5 +71,5 @@ As a result, the output file `gratio.out` is created.
 
 # History
 
-*Version 1.0*
-- Initial release
+*Version 0.1*
+- Pre-release
