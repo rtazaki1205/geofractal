@@ -36,7 +36,7 @@ In addition, the user also needs to specify following three options
 	`iqcor=2` : The exponential cut-off model  
 	`iqcor=3` : The fractal dimension cut-off model  
 	
-I recommend following set of options: `iqapp=2`,`iqcor=3`,`iqcon=2` (default).  
+I recommend following set of options: `iqapp=3`,`iqcor=3`,`iqcon=2` (default).  
 
 To run the code, first of all, compile the codes via
 ```
