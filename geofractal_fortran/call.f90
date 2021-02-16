@@ -31,8 +31,8 @@ iqcor   = 3                     ! correlation func.
 !--------------------------------------------------------------------------------
 !       BPCA
 !--------------------------------------------------------------------------------
-df      = df_bpca               ! fractal dimension
-k0      = k0_bpca               ! fractal prefactor
+!df      = df_bpca               ! fractal dimension
+!k0      = k0_bpca               ! fractal prefactor
 !--------------------------------------------------------------------------------
 !       BCCA
 !--------------------------------------------------------------------------------
@@ -41,8 +41,8 @@ k0      = k0_bpca               ! fractal prefactor
 !--------------------------------------------------------------------------------
 !       other fractal dimensions
 !--------------------------------------------------------------------------------
-!df      = 1.0_dp                ! fractal dimension
-!k0      = (k0_chain-k0_bpca)/(df_chain-df_bpca)*(df-df_bpca)+k0_bpca
+df      = 3.0_dp                ! fractal dimension
+k0      = (k0_chain-k0_bpca)/(df_chain-df_bpca)*(df-df_bpca)+k0_bpca
 !--------------------------------------------------------------------------------
 
 !--------------------------------------------------------------------------------
@@ -59,21 +59,16 @@ enddo
 !       Output
 !--------------------------------------------------------------------------------
 open(10,file="gratio.out",status="unknown")
-write(10,1100) iqapp," = iqapp"
-write(10,1100) iqcon," = iqcon"
-write(10,1100) iqcor," = iqcor"
-write(10,1000) df, " = fractal dimension"
-write(10,1000) k0, " = fractal prefactor"
-write(10,2000) "PN","G/NpiR0^2"
+write(10,'("# iqapp = ",I3)')iqapp
+write(10,'("# iqcon = ",I3)')iqcon
+write(10,'("# iqcor = ",I3)')iqcor
+write(10,'("# df    = ",1PE14.6)')df
+write(10,'("# k0    = ",1PE14.6)')k0
+write(10,'("#",A14,A15)') "PN","G/NpiR0^2"
 do i=1,n
-        write(10,3000) PN(i),G(i)
+        write(10,'(1P2E15.6)') PN(i),G(i)
 enddo
-stop
 
-1000 format('#',1PE15.5,A)
-1100 format('#',I15,A)
-2000 format('#',8A15)
-3000 format(' ',1P8E15.5)
 print *, 'finished.'
 
 stop

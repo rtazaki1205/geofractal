@@ -6,7 +6,7 @@
 !
 ! GEOFRACTAL v1.0 computes the geometrical cross section of randomly orientated 
 ! fractal dust aggregates based on a statistical distribution model of monomer 
-! particles developed in Tazaki (in prep.).
+! particles developed in Tazaki (2021).
 ! 
 ! If you wish to publish a paper that contains results obtained by this code, 
 ! please acknowledge this code and cite relevant papers. 
@@ -17,7 +17,7 @@
 ! tested, the code may still contain a bug. I am not responsible for any damages
 ! caused by the use of the code. If you find a bug, please let me know.
 !
-!                                                   Ryo Tazaki (2021/Jan/1)
+!                                                   Ryo Tazaki (2021/Feb/16)
 !                                                   email: r.tazaki -at- uva.nl 
 !
 !--------------------------------------------------------------------------------
@@ -30,6 +30,7 @@
 !
 ! iqapp         : Select a method for solving radial and angular integration 
 !                 when computing the mean overlapping efficiency.
+!                 (iqapp=2 is dismissed since version 1.0.)
 !                --------------------------------------------------------
 !                          |    radial  (x)        |  angular (u)        |
 !                ---------------------------------------------------------
@@ -47,7 +48,7 @@
 !                 iqcon  = 2 : The exponential cut-off function
 !                 iqcon  = 3 : The fractal dimension cut-off function
 !
-! Prefered set of options is iqcor=3, iqapp=3 and iqcon=2.
+! A prefered set of options is iqcor=3, iqapp=3, and iqcon=2.
 ! Note that iqcor=1 is also possible, but avoid using iqcor=2.
 !
 !--------------------------------------------------------------------------------
@@ -55,7 +56,7 @@
 !--------------------------------------------------------------------------------
 !
 ! G  : The geocross section of the aggregate normalized by a factor PN*pi*R0^2. 
-!      Thus, "G" is non-dimensional quantity. 
+!      Therefore, "G" is non-dimensional.
 !
 !--------------------------------------------------------------------------------
 
@@ -150,7 +151,7 @@ end function GS
 !--------------------------------------------------------------------------------
 !
 ! This subroutine calculations the mean overlapping efficiency: sigma
-! (In Tazaki in prep., this quantity corresponds to \tilde{sigma} )
+! [ In Tazaki 2021, this quantity corresponds to \tilde{sigma} ]
 !
 ! For iqcor=1 [Gaussian cut-off model]
 !
@@ -176,19 +177,17 @@ end function GS
 !
 !       xmin = 2^(df-1)*k0/PN; a=(df-2)/df; rho = (x/xmin)^(1/df)
 !
-! where df is fractal dimension, R0 is the monomer radius, Rg is 
-! the radius of gyration, frad(x) is the radial integrand function, 
-! and S(rho) is the angular integral function.
+! where frad(x) and S(rho) are the radial and angular integrand functions:
 !
-! frad(x)dlnx = x^{a}*exp(-x) dlnx = x^{a-1}exp(-x) dx
+! frad(x) dlnx = x^{a}*exp(-x) dlnx ( = x^{a-1}exp(-x) dx )
 !
 !           16*rho^2  / (1/rho)   
 ! S(rho)  = --------  |  du fang(rho,u),
 !              pi     /0      
 ! 
-! fang(rho,u) = [Arcsin{sqrt(1-rho^2u^2)} - rho*u*sqrt{1-rho^2u^2}]*u/sqrt(1-u^2)
+! fang(rho,u) = (u/sqrt(1-u^2)) * [Arcsin{sqrt(1-rho^2u^2)} - rho*u*sqrt{1-rho^2u^2}]
 !
-! Note that the angular integral function S(rho) ≈1 when rho >> 1.
+! Note that the angular integral function is normalized such that S(rho) ≈ 1 for rho >> 1.
 !
 !--------------------------------------------------------------------------------
 subroutine mean_overlap_efficiency(iqapp,iqcor,k0,df,PN,sigma)
