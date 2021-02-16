@@ -13,7 +13,7 @@ def geofractal(PN,df,k0,cormodel):
 
      GEOFRACTAL computes geometrical cross sections of randomly orientated
      fractal dust aggregates based on a statistical distribution model of monomer
-     particles developed in Tazaki (in prep.).
+     particles developed in Tazaki (2021).
 
     --------------------------------------------------------------------------------
      INPUT PARAMETERS
@@ -21,10 +21,10 @@ def geofractal(PN,df,k0,cormodel):
      
      Df            : fractal dimension
      PN            : number of monomers
-     k0            : fractal prefactor defined by PN = k0*(Rg/R0)^Df
+     k0            : fractal prefactor
      cormodel      : The cut-off model of the correlation function
                      cormodel = "EXPNL" : The exponential cut-off function
-                     cormodel = "GAUSS" : The Gaussias cut-off function
+                     cormodel = "GAUSS" : The Gaussian cut-off function
                      cormodel = "FLDIM" : The fractal dimension cut-off function
 
     --------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ def geofractal(PN,df,k0,cormodel):
     --------------------------------------------------------------------------------
 
      G  : The geocross section of the aggregate normalized by a factor PN*pi*R0^2.
-          Thus, "G" is non-dimensional quantity.
+          Therefore, "G" is non-dimensional.
 
     -------------------------------------------------------------------------------- 
     """
@@ -58,7 +58,7 @@ def geofractal(PN,df,k0,cormodel):
     #
     # Threshold number of monomers Nth
     #
-    PNTH=min(11.0*(df-1.0)+2.5,8.0)
+    PNTH=min(11.0*df-8.5,8.0)
 
     #
     # calculation based on the analytical formula
