@@ -257,7 +257,7 @@ subroutine angular_integration(iqcor,x,xmin,df,sang)
 use types; use const
 implicit none
 integer            :: i,j,iqcor
-integer,parameter  :: nmax_u = 500
+integer,parameter  :: nmax_u = 1000
 real(kind=dp)      :: x,xmin,df,rho,umin,umax,du,fang,sang
 real(kind=dp)      :: u(1:nmax_u)
 
