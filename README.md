@@ -9,8 +9,8 @@ by means of a statistical distribution model of monomers proposed in Tazaki (sub
 and redistributed freely. If you use this package to publish papers, please cite the following paper
 
 > R. Tazaki  
-> *Analytical formula for geometric cross-sections of fractal dust aggregates*  
-> Submitted to MNRAS  
+> * Analytic expressions for geometric cross-sections of fractal dust aggregates*  
+> Accepted for publication in MNRAS  
 
 
 # Examples 
