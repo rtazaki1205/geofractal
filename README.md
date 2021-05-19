@@ -1,7 +1,7 @@
 # Introduction to geofractal
 
 This package allows to compute average geometric cross sections of fractal dust aggregates 
-by means of a statistical distribution model of monomers proposed in Tazaki (2021).  
+by means of a statistical distribution model of monomers proposed in [Tazaki (2021)](https://ui.adsabs.harvard.edu/abs/2021MNRAS.504.2811T).  
 
 # Terms of use
 
